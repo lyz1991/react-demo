@@ -1,0 +1,31 @@
+input[type='radio'], input[type='checkbox'] {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  position: relative;
+  border: 1px solid #0097ff;
+  outline: none;
+}
+input[type='radio'], input[type='checkbox']:checked {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  position: relative;
+  border: 1px solid #0097ff;
+  outline: none;
+  background-color: white;
+}
+input[class='square']:checked:after{
+  display: block;
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 8px;
+  left: 17%;
+  top: 42%;
+  transform: rotate(45deg) translate(-50%, -50%);
+  border-bottom: 1px solid #0097ff;
+  border-right: 1px solid #0097ff;
+}

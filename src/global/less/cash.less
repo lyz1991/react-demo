@@ -1,0 +1,99 @@
+@import './reset.less';
+@import './transition.less';
+:global {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+    -webkit-text-size-adjust: 100%;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    height: 100%;
+  }
+  body {
+    margin: 0 auto;
+    max-width: 10rem;
+    word-break: break-all;
+    word-wrap: break-word;
+    font-size: 14/75rem;
+    font-family: PingFangSC-Regular, Helvetica, "Droid Sans", Arial, sans-serif;
+    height: 100%;
+  }
+  .blank {
+    height: 20/75rem;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: #1FABFB;
+  }
+  input,select {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .icon {
+    font-size: 28/75rem;
+    font-style: normal;
+    font-family: 'card_font';
+  }
+  .i-boardcast:before {
+    content: "\e64d";
+  }
+  .i-v:before {
+    content: '\e603';
+  }
+  .i-v {
+    display: inline-block;
+    margin-top: -.1rem;
+  }
+  .i-right:before {
+    content: '\e68f';
+  }
+  .i-close:before {
+    content: '\e624';
+  }
+  .i-ques:before {
+    content: '\e657';
+  }
+  .diacontainer {
+    background-color: white;
+    width: 672/75rem;
+    height: auto;
+    border-radius: 30/75rem;
+    padding: 60/75rem 36/75rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #888888;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    ul {
+      margin-left: 40/75rem;
+      font-size: 25/75rem;
+      text-align: left;
+      li {
+        margin-bottom: 5/75rem;
+      }
+    }
+    .close{
+      width: 68/75rem;
+      height: 112/75rem;
+      position: absolute;
+      right: 20/75rem;
+      top: -112/75rem;
+    }
+  }
+}
+
+
+@font-face {
+  font-family: 'card_font';  /* project id 303519 */
+  src: url('//at.alicdn.com/t/font_sou1n52o87uy2e29.eot');
+  src: url('//at.alicdn.com/t/font_sou1n52o87uy2e29.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_sou1n52o87uy2e29.woff') format('woff'),
+  url('//at.alicdn.com/t/font_sou1n52o87uy2e29.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_sou1n52o87uy2e29.svg#iconfont') format('svg');
+}
