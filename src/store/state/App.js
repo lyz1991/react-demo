@@ -34,10 +34,10 @@ class App {
     this.footers = {
       state: false,
       items: [
-        {text: '首页', path: '/home', active: true},
-        {text: '社保定点', path: '/detail', active: false},
-        {text: '社保升级', path: '/topic', active: false},
-        {text: '我的', path: '/personal', active: false}
+        {text: ' ', path: '/home', active: true},
+        {text: ' ', path: '/detail', active: false},
+        {text: '', path: '/topic', active: false},
+        {text: '', path: '/personal', active: false}
       ]
     }
   }
@@ -46,10 +46,10 @@ class App {
     this.footers = {
       state: state,
       items: [
-        {text: '首页', path: '/home', active: true},
-        {text: '社保定点', path: '/detail', active: false},
-        {text: '社保升级', path: '/topic', active: false},
-        {text: '我的', path: '/personal', active: false}
+        {text: ' ', path: '/home', active: true},
+        {text: ' ', path: '/detail', active: false},
+        {text: ' ', path: '/topic', active: false},
+        {text: ' ', path: '/personal', active: false}
       ]
     }
   }

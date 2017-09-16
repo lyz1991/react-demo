@@ -86,8 +86,7 @@ class Dialog extends React.Component {
     if (this.time) return
     if (login.phone.valid) {
       window.zhuge.track(`${channel}|登录页验证码|点击`)
-      pull.post(`${preA}/customer/sendValidCode`, {phone: this.data.phone}, true).then(({data}) => {
-      })
+
       this.timer = 60
       this.time = setInterval(() => {
         if (this.timer > 0) {

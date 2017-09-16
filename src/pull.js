@@ -1,5 +1,4 @@
 import 'whatwg-fetch'
-window.preA = '/cashcard'
 let headers = {
   'Accept': 'application/json'
 }

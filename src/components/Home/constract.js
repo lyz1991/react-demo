@@ -90,9 +90,7 @@ const Constract = ({history, cusid}) => (
       showTip({text: {__html: '请选择关系'}})
       return
     }
-    pull.post(`${preA}/contact/getLimit`, this.state, true).then(({res}) => {
-      this.props.history.push('loan')
-    })
+    this.props.history.push('loan')
   }
 }
 
