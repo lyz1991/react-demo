@@ -3,7 +3,7 @@ import Tip from './Common/Tip'
 import Loading from './Common/Loading'
 import Header from './Common/Header'
 import {
-  HashRouter as Router,
+  Router,
   Route,
   Link,
   Redirect

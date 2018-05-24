@@ -2,10 +2,6 @@ import * as route from './router_name'
 import Constract from 'bundle-loader?lazy&name=[name]!../components/Home/constract'
 import Home from 'bundle-loader?lazy&name=[name]!../components/Home/Index'
 import Login from 'bundle-loader?lazy&name=[name]!../components/Home/login'
-import Personal from 'bundle-loader?lazy&name=[name]!../components/Personal/personal'
-import Loan from 'bundle-loader?lazy&name=[name]!../components/Personal/loanAmount'
-import Withdraw from 'bundle-loader?lazy&name=[name]!../components/Personal/withdraw'
-import Loading from 'bundle-loader?lazy&name=[name]!../components/Personal/loading'
 import Bundle from '../components/Common/Bundle'
 import { showHead } from '../store/actions'
 import tool from 'plugins/tool'
@@ -41,9 +37,6 @@ export const config = (text, { customerId }, history) => {
       if (routes[i].meta.auth && !customerId) {
         history.push('index')
       }
-    }
-    if (routes[i].meta.header.require) {
-      !tool.IsWX() && showHead(routes[i].meta.header.text)
     }
   }
 }

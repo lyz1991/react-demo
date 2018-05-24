@@ -1,7 +1,6 @@
 import React from 'react'
 import index from './less/login'
 import { login } from 'plugins/validate'
-import Banner from '../Common/Banner'
 import tool from 'plugins/tool'
 import { inject, observer } from 'mobx-react'
 import { observable } from 'mobx'
