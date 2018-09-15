@@ -10,8 +10,8 @@ module.exports = merge({
   entry:  ['babel-polyfill', './src/main.js'],
   output: {
     path: config.build.assetsRoot,
-    filename: 'static/js/[name].[chunkhash].js',
-    chunkFilename: "static/js/[name].[chunkhash].js"
+    filename: 'static/js/[name].js',
+    chunkFilename: "static/js/[name].js"
   },
   module: {
     rules: [

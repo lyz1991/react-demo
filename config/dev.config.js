@@ -31,8 +31,8 @@ module.exports = merge({
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
+      filename: 'dev.html',
+      template: 'dev.html',
       inject: true
     })
   ],
