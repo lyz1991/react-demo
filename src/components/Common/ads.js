@@ -29,6 +29,7 @@ export default class Ads extends React.Component {
       </div>)
   }
   componentDidMount () {
+    console.log(2)
     this.transform = tool.prefix(this.refs.ads, 'transform')
     this.transition = tool.prefix(this.refs.ads, 'transition')
     this.refs.ads.addEventListener('webkitTransitionEnd', e => this.end(e, true))

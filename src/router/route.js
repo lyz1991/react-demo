@@ -1,7 +1,7 @@
 import * as route from './router_name'
-import Constract from 'bundle-loader?lazy&name=[name]!../components/Home/constract'
-import Home from 'bundle-loader?lazy&name=[name]!../components/Home/Index'
-import Login from 'bundle-loader?lazy&name=[name]!../components/Home/login'
+import Constract from 'bundle-loader?lazy&name=[name]!../pages/Home/constract'
+import Home from 'bundle-loader?lazy&name=[name]!../pages/Home/Index'
+import Login from 'bundle-loader?lazy&name=[name]!../pages/Home/login'
 import Bundle from '../components/Common/Bundle'
 import { showHead } from '../store/actions'
 import tool from 'plugins/tool'
@@ -13,7 +13,7 @@ export const routes = [
       header: {
         require: true,
         text: {
-          __html:'<i class="icon i-v"></i>卡'
+          __html: '<i class="icon i-v"></i>卡'
         }
       }
     },
@@ -23,20 +23,22 @@ export const routes = [
         {(Home) => <Home history={history}/>}
       </Bundle>
     )
+  },
+  { path: '/Personal',
+    meta: {
+      auth: false,
+      header: {
+        require: true,
+        text: {
+          __html: '<i class="icon i-v"></i>卡'
+        }
+      }
+    },
+    name: route.Login,
+    components: ({history}) => (
+      <Bundle load={Login}>
+        {(Login) => <Login history={history}/>}
+      </Bundle>
+    )
   }
 ]
-export const config = (text, { customerId }, history) => {
-  let hash
-  if (text.hash.indexOf('?') != -1) {
-    hash = text.hash.substring(2, text.hash.indexOf('?'))
-  } else {
-    hash = text.hash.substr(2)
-  }
-  for (let i = 0; i < routes.length; i++) {
-    if (routes[i].name == hash) {
-      if (routes[i].meta.auth && !customerId) {
-        history.push('index')
-      }
-    }
-  }
-}

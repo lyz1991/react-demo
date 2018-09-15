@@ -4,7 +4,7 @@ import {constract} from 'plugins/validate'
 import { observable } from 'mobx'
 import { inject, observer } from 'mobx-react'
 import tool from 'plugins/tool'
-import { showTip } from '../../store/actions'
+import { showTip } from '../../store/actions/index'
 let channel = localStorage.getItem('channel')
 window.zhuge.track(`${channel}|填写联系人页面|展示`)
 const Constract = ({history, cusid}) => (

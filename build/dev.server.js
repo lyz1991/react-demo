@@ -12,10 +12,11 @@ process.env.NODE_ENV === 'mock' && require('../mock/data')(app)
 let compiler = webpack(webpackConfig, function (err, stats) {
     process.stdout.write(stats.toString({
         colors: true,
-        modules: false,
+        modules: true,
         children: false,
-        chunks: false,
-        chunkModules: false
+        chunks: true,
+        chunkModules: true,
+        noInfo: true
     }) + '\n\n')
     if (stats.hasErrors()) {
       console.log(chalk.red(" Build failed with errors.\n"))
@@ -23,12 +24,22 @@ let compiler = webpack(webpackConfig, function (err, stats) {
     }
     console.log(chalk.cyan(" Build complete.\n"));
 })
-app.use(require("webpack-hot-middleware")(compiler));
+app.use(require("webpack-hot-middleware")(compiler, {
+  colors: true,
+  noInfo: true
+}));
 app.use(path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory), express.static('./static'))
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.dev.assetsPublicPath
 }))
+app.get('*', function (req, res) {
+  if (!path.extname(req.path)) {
+    res.sendFile(path.resolve(__dirname, '../index.html'))
+  } else {
+    console.log('req',req.path)
+  }
+})
 app.listen(config.dev.port, function (res) {
   console.log(`Listening on port ${config.dev.port}!`)
-  process.env.NODE_ENV !== 'mock' && open(`http://localhost:${config.dev.port}/#/index`)
+  process.env.NODE_ENV !== 'mock' && open(`http://localhost:${config.dev.port}/index`)
 })

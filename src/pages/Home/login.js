@@ -4,13 +4,11 @@ import { login } from 'plugins/validate'
 import tool from 'plugins/tool'
 import { inject, observer } from 'mobx-react'
 import { observable } from 'mobx'
-import { showTip } from '../../store/actions'
+import { showTip } from '../../store/actions/index'
 let channel = localStorage.getItem('channel')
-window.zhuge.track(`${channel}|登录页面|展示`)
 
 const Login = ({history, customerId}) => (
   <div className={index.header}>
-    <Banner/>
     <Form history={history}/>
   </div>
 )
@@ -84,7 +82,6 @@ class Dialog extends React.Component {
   getcode () {
     if (this.time) return
     if (login.phone.valid) {
-      window.zhuge.track(`${channel}|登录页验证码|点击`)
 
       this.timer = 60
       this.time = setInterval(() => {
