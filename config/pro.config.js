@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = merge({
-  entry:  ['babel-polyfill', './src/main.js'],
+  entry:  ['@babel/polyfill', './src/main.js'],
   output: {
     path: config.build.assetsRoot,
     filename: 'static/js/[name].js',

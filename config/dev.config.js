@@ -4,7 +4,7 @@ const merge = require('webpack-merge')
 const base = require('./base.config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = merge({
-  entry: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000','babel-polyfill','./src/main.js'],
+  entry: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000','@babel/polyfill','./src/main.js'],
   output: {
     path: '/',
     filename: '[name].js'

@@ -6,6 +6,12 @@ import {
 } from 'react-router-dom'
 function Home() {
     const [count, setCount] = useState({age: 22});
+    useEffect(() => {
+      console.log(2232)
+    })
+    setTimeout(() => {
+      setCount({age: 35})
+    }, 3000)
     return (
      <div className ={index.header}>
       <Ads/>

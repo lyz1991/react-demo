@@ -14,7 +14,7 @@ module.exports = {
     },
     sourceType: 'module'
   },
-  "globals": {
+  globals: {
     "pull": true,
     "preA": true
   },

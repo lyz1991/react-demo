@@ -28,11 +28,12 @@ app.use(require("webpack-hot-middleware")(compiler, {
   colors: true,
   noInfo: true
 }));
-app.use(path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory), express.static('./static'))
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.dev.assetsPublicPath
 }))
+app.use(path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory), express.static('./static'))
 app.get('*', function (req, res) {
+  console.log('path', req.path)
   if (!path.extname(req.path)) {
     res.sendFile(path.resolve(__dirname, '../dev.html'))
   } else {

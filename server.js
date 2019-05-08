@@ -8,8 +8,8 @@ app.use(express.static('./dist/'))
 app.get('*', function (req, res) {
   console.log('req', path.extname(req.path))
   if (!path.extname(req.path)) {
+    console.log('ee')
     res.sendFile(path.resolve(__dirname, './dist/index.html'))
-    // res.sendFile(path.resolve(__dirname, `./dist/static/js/main.js`))
   }
 })
 app.listen(port, function (res) {
