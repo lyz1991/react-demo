@@ -16,20 +16,24 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: [/node_modules/, /config/, /ignore_lib/],
-      },
-      {
-        test: /\.js$/,
         include: projectRoot,
         loaders: ['babel-loader'],
-        exclude: [/node_modules/, /ignore_lib/]
+        exclude: [/node_modules/,/config/, /ignore_lib/]
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader'
+      },
+      {
+        test: /\.txt$/,
+        loader: 'text-loader'
       }
-
     ]
+  },
+  resolveLoader: {
+    alias: {
+        'text-loader': path.resolve(__dirname, '../loaders/text-loader'),
+    },
   },
   resolve: {
     extensions: ['.js', '.less', '.json', '.scss'],

@@ -1,6 +1,7 @@
 const express = require("express")
 const webpackDevMiddleware = require("webpack-dev-middleware")
 const webpack = require("webpack")
+const fs = require('fs')
 let webpackConfig = require("../config/dev.config")
 const path = require('path')
 const chalk = require('chalk')
@@ -31,6 +32,14 @@ app.use(require("webpack-hot-middleware")(compiler, {
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.dev.assetsPublicPath
 }))
+const file = fs.readFileSync(path.resolve(__dirname, '../static/images/mask/huojian.png'));
+console.log('files', file)
+app.get('/arraybuffer', (req, res) => {
+  res.send(file)
+})
+app.get('/blob', (req, res) => {
+  res.send(file)
+})
 app.use(path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory), express.static('./static'))
 app.get('*', function (req, res) {
   console.log('path', req.path)
