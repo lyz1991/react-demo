@@ -7,7 +7,7 @@ import {
 function Home() {
     const [count, setCount] = useState({age: 22});
     useEffect(() => {
-      console.log(2232)
+      console.log(22)
     })
     setTimeout(() => {
       setCount({age: 35})

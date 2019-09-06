@@ -9,6 +9,7 @@ module.exports = merge({
     path: '/',
     filename: '[name].js'
   },
+  mode: 'development',
   module: {
     rules: [
       {
