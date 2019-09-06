@@ -13,10 +13,7 @@ let compiler = webpack(webpackConfig)
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.dev.assetsPublicPath
 }))
-app.use(require("webpack-hot-middleware")(compiler, {
-  colors: true,
-  noInfo: true
-}));
+app.use(require("webpack-hot-middleware")(compiler));
 app.use(path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory), express.static('./static'))
 app.get('*', function (req, res) {
   if (!path.extname(req.path)) {
