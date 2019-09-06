@@ -22,17 +22,24 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader'
+        loader: 'text-loader'
+      },
+        {
+        test: /\.html$/,
+        loader: 'html-loader'
       },
       {
-        test: /\.txt$/,
-        loader: 'text-loader'
+        test: /\.xls$/,
+        loader: 'text-loader',
+        options: {
+          limit: 10
+        }
       }
     ]
   },
   resolveLoader: {
     alias: {
-        'text-loader': path.resolve(__dirname, '../loaders/text-loader'),
+        'text-loader': path.resolve(__dirname, '../loaders/text-loader')
     },
   },
   resolve: {

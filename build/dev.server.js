@@ -32,13 +32,12 @@ app.use(require("webpack-hot-middleware")(compiler, {
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.dev.assetsPublicPath
 }))
-const file = fs.readFileSync(path.resolve(__dirname, '../static/images/mask/huojian.png'));
-console.log('files', file)
+
 app.get('/arraybuffer', (req, res) => {
-  res.send(file)
+  res.sendFile(path.resolve(__dirname, '../static/images/mask/huojian.png'))
 })
 app.get('/blob', (req, res) => {
-  res.send(file)
+  res.sendFile(path.resolve(__dirname, '../static/nj.xls'))
 })
 app.use(path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory), express.static('./static'))
 app.get('*', function (req, res) {
@@ -46,7 +45,8 @@ app.get('*', function (req, res) {
   if (!path.extname(req.path)) {
     res.sendFile(path.resolve(__dirname, '../dev.html'))
   } else {
-    console.log('req',req.path)
+    console.log('file', req.path)
+    res.sendFile(path.resolve(__dirname, path.resolve(__dirname, `../static/${req.path}`)))
   }
 })
 app.listen(config.dev.port, function (res) {
