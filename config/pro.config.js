@@ -5,9 +5,18 @@ const base = require('./base.config')
 const config = require('../config/index')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const miniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = merge({
   entry:  ['@babel/polyfill', './src/main.js'],
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      chunks(chunk) {
+        return chunk.resource && /\.js$/.test(chunk.resource) && chunk.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
+      },
+      minChunks: 3
+    }
+  },
   output: {
     path: config.build.assetsRoot,
     filename: 'static/js/[name].js',
@@ -17,22 +26,15 @@ module.exports = merge({
     rules: [
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader?modules', 'less-loader', 'postcss-loader']
-        })
+        use: [
+          miniCssExtractPlugin.loader, 'css-loader?modules', 'less-loader', 'postcss-loader'
+        ]
       }
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module, count) {
-        return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
-      }
-    }),
-    new ExtractTextPlugin({
-      filename: path.join(config.build.assetsSubDirectory, '/css/[name].[contenthash].css')
+    new miniCssExtractPlugin({
+            filename: 'focus.index.[contenthash:8].css'
     }),
     new CopyWebpackPlugin([
       {

@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const projectRoot = path.resolve(__dirname, '../src')
+const LogPlugin = require('../plugin/Logplugin')
 module.exports = {
   module: {
     rules: [
@@ -16,20 +17,31 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: [/node_modules/, /config/, /ignore_lib/],
-      },
-      {
-        test: /\.js$/,
         include: projectRoot,
         loaders: ['babel-loader'],
-        exclude: [/node_modules/, /ignore_lib/]
+        exclude: [/node_modules/,/config/, /ignore_lib/]
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader'
+        loader: 'text-loader'
+      },
+        {
+        test: /\.html$/,
+        loader: 'html-loader'
+      },
+      {
+        test: /\.xls$/,
+        loader: 'text-loader',
+        options: {
+          limit: 10
+        }
       }
-
     ]
+  },
+  resolveLoader: {
+    alias: {
+        'text-loader': path.resolve(__dirname, '../loaders/text-loader')
+    },
   },
   resolve: {
     extensions: ['.js', '.less', '.json', '.scss'],
@@ -44,5 +56,12 @@ module.exports = {
     }
   },
   plugins: [
+    new LogPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      options: {
+        context: __dirname
+      }
+    })
   ]
 }
